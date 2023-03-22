@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
+import Country from './components/Country/Country';
 
 function App() {
   return (
@@ -17,9 +18,18 @@ function LoadCountries(){
     .then(res=>res.json())
     .then(data=>setCountries(data))
   },[])
+
+
+
   return(
-    <h1> visiting every country of the world , {countries.length} </h1>
-  )
-}
+  <div>
+  <h1> This is counties </h1>
+    {
+      countries.map(country=><Country name={country.name.common}></Country>)
+    }
+ 
+  </div>
+   )
+  }
 
 export default App;
